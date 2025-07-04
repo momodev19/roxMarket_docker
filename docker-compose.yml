@@ -2,13 +2,14 @@ services:
   backend:
     build: 
       context: ..
-      dockerfile: docker/backend/Dockerfile
+      dockerfile: ./docker/backend/Dockerfile
     container_name: express_backend
     ports:
       - "5000:5000"
     volumes:
       - ../backend:/srv/backend
       - /srv/backend/node_modules
+      - vscode-server:/root/.vscode-server
     depends_on:
       - db
     environment:
@@ -21,13 +22,14 @@ services:
   frontend:
     build: 
       context: ..
-      dockerfile: docker/frontend/Dockerfile
+      dockerfile: ./docker/frontend/Dockerfile
     container_name: nextjs_frontend
     ports:
       - "3000:3000"
     volumes:
       - ../frontend:/srv/frontend
       - /srv/frontend/node_modules
+      - vscode-server:/root/.vscode-server
     depends_on:
       - backend
 
@@ -54,3 +56,5 @@ services:
 
 volumes:
   postgres_data:
+  # vscode-extensions:
+  vscode-server:

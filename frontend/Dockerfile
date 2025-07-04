@@ -4,9 +4,11 @@ WORKDIR /srv/frontend
 
 COPY ../../frontend/package*.json ./
 
+RUN apk add --no-cache git
+
 RUN npm install
 
-# COPY ../../frontend .
+COPY ../../frontend .
 
 EXPOSE 3000
 

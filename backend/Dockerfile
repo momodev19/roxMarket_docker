@@ -4,9 +4,11 @@ WORKDIR /srv/backend
 
 COPY ../../backend/package*.json ./
 
+RUN apk add --no-cache git
+
 RUN npm install
 
-# COPY ../../backend .
+COPY ../../backend .
 
 EXPOSE 5000
 

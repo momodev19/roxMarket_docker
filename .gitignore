@@ -1,1 +1,19 @@
 .env
+# Docker-related files and folders
+
+# Ignore Docker build context files (if any)
+**/docker/tmp/
+**/docker/cache/
+**/docker/data/
+**/docker/volumes/
+
+# Local Docker override config (optional)
+docker-compose.override.yml
+
+# Docker named volume folders (if mapped to local)
+volume/
+postgres_data/
+
+# Ignore Docker-related logs or temp files
+*.pid
+*.log
