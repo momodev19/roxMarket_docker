@@ -5,6 +5,7 @@ WORKDIR /srv/backend
 COPY ../../backend/package*.json ./
 
 RUN apk add --no-cache git
+RUN apk add --no-cache openssh
 
 RUN npm install
 

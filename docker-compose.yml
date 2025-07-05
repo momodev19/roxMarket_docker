@@ -10,6 +10,7 @@ services:
       - ../backend:/srv/backend
       - /srv/backend/node_modules
       - vscode-server:/root/.vscode-server
+      - ${SSH_AUTH_SOCK}:/ssh-agent:/ssh-agent
     depends_on:
       - db
     environment:
@@ -18,6 +19,7 @@ services:
       - DB_PASSWORD=${DB_PASSWORD}
       - DB_NAME=${DB_NAME}
       - DB_PORT=5432
+      - SSH_AUTH_SOCK=/ssh-agent
 
   frontend:
     build: 
@@ -30,6 +32,9 @@ services:
       - ../frontend:/srv/frontend
       - /srv/frontend/node_modules
       - vscode-server:/root/.vscode-server
+      - ${SSH_AUTH_SOCK}:/ssh-agent:/ssh-agent
+    environment:
+      - SSH_AUTH_SOCK=/ssh-agent
     depends_on:
       - backend
 
